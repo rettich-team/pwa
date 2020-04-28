@@ -1,14 +1,14 @@
 <template>
-  <v-app>
-    <v-toolbar app>
-    <v-toolbar-title class="headline text-uppercase">
-    <span>Rettich</span>
-    </v-toolbar-title>
+  <v-app class="grey lighten4">
+    <v-toolbar flat app>
+    <v-bottom-navigation>liste</v-bottom-navigation>
+    <v-bottom-navigation>map</v-bottom-navigation>
     </v-toolbar>
     <v-content>
       <!--
       <HelloWorld/>
       -->
+      <span>bla</span>
     </v-content>
   </v-app>
 </template>
