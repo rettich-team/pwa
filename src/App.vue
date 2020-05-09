@@ -1,15 +1,65 @@
+/* eslint-disable vue/no-parsing-error */
 <template>
-  <v-app class="grey lighten4">
-    <v-toolbar flat app>
-    <v-bottom-navigation>liste</v-bottom-navigation>
-    <v-bottom-navigation>map</v-bottom-navigation>
+
+  <v-app>
+    <v-card id="lateral">
+    <v-toolbar
+      dark
+      fixed-tabs
+      flat
+      color="2f3618"
+    >
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-toolbar-title>Rettich</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+      <template v-slot:extension>
+        <v-tabs
+          fixed-tabs
+          v-model="tabs"
+        >
+          <v-tab href="#one">Map</v-tab>
+          <v-tab href="#two">List</v-tab>
+          <v-tabs-slider color="d6fe75"></v-tabs-slider>
+        </v-tabs>
+      </template>
     </v-toolbar>
-    <v-content>
-      <!--
-      <HelloWorld/>
-      -->
-      <span>bla</span>
-    </v-content>
+    <v-card-text>
+      <v-tabs-items v-model="tabs">
+        <v-tab-item
+          v-for="content in ['one', 'two']"
+          :key="content"
+          :value="content"
+        >
+          <v-card
+            height="100%"
+            flat
+          >
+          <span>bla</span>
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card-text>
+    <v-fab-transition>
+      <v-btn
+        :key="activeFab.icon"
+        :color="activeFab.color"
+        fab
+        large
+        dark
+        bottom
+        left
+        class="v-btn--example"
+      >
+        <v-icon>{{ activeFab.icon }}</v-icon>
+      </v-btn>
+    </v-fab-transition>
+  </v-card>
   </v-app>
 </template>
 
@@ -18,13 +68,21 @@
 
 export default {
   name: 'App',
-
-  components: {
-    // HelloWorld,
-  },
-
   data: () => ({
-    //
+    fab: false,
+    hidden: false,
+    tabs: null,
   }),
+
+  computed: {
+    // HelloWorld,
+    activeFab() {
+      switch (this.tabs) {
+        case 'one': return { color: 'd3ff72', icon: 'mdi-plus' };
+        case 'two': return { color: 'd3ff72', icon: 'mdi-crosshairs-gps' };
+        default: return {};
+      }
+    },
+  },
 };
 </script>
