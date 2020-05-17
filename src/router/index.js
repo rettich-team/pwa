@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+// eslint-disable-next-line no-unused-vars
+import about from '../views/About.vue';
 
 Vue.use(VueRouter);
 

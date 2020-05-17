@@ -20,17 +20,23 @@
       </v-btn>
       <template v-slot:extension>
         <v-tabs
-          fixed-tabs
           v-model="tabs"
+          grow
         >
-          <v-tab href="#one">Map</v-tab>
-          <v-tab href="#two">List</v-tab>
-          <v-tabs-slider color="d6fe75"></v-tabs-slider>
+          <v-tab>List</v-tab>
+          <v-tab>Map</v-tab>
         </v-tabs>
       </template>
     </v-toolbar>
     <v-card-text>
+
       <v-tabs-items v-model="tabs">
+        <v-tab-item>
+        <BlogPost/>
+      </v-tab-item>
+      <v-tab-item>
+        <p>Map comming soon</p>
+      </v-tab-item>
         <v-tab-item
           v-for="content in ['one', 'two']"
           :key="content"
@@ -40,30 +46,6 @@
             height="100%"
             flat
           >
-          <!-- card: -->
-          <v-card
-    class="mx-auto"
-    max-width="400"
-  >
-    <v-img
-      class="white--text align-end"
-      height="200px"
-      src="./containern3.png"
-    >
-      <v-card-title>EDEKA Summerer</v-card-title>
-    </v-img>
-
-    <v-card-subtitle class="pb-0">ab 20 Uhr</v-card-subtitle>
-
-    <v-card-text class="text--primary">
-      <div>Links am Gebäude vorbeigehen. Dort befindet sich ein großer grüner Container!</div>
-    </v-card-text>
-
-    <v-card-actions>
-  <v-btn block color="green" dark>Status: Heute noch nicht geleert!</v-btn>
-    </v-card-actions>
-  </v-card>
-  <!-- card end -->
           </v-card>
         </v-tab-item>
       </v-tabs-items>
@@ -87,10 +69,13 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
+import BlogPost from './components/BlogPost.vue';
 
 export default {
   name: 'App',
+  components: {
+    BlogPost,
+  },
   data: () => ({
     fab: false,
     hidden: false,
@@ -98,7 +83,7 @@ export default {
   }),
 
   computed: {
-    // HelloWorld,
+    BlogPost,
     activeFab() {
       switch (this.tabs) {
         case 'one': return { color: 'd3ff72', icon: 'mdi-plus' };
