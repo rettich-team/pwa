@@ -32,10 +32,10 @@
 
       <v-tabs-items v-model="tabs">
         <v-tab-item>
-        <BlogPost/>
+        <List/>
       </v-tab-item>
       <v-tab-item>
-        <p>Map comming soon</p>
+        <Map/>
       </v-tab-item>
         <v-tab-item
           v-for="content in ['one', 'two']"
@@ -69,12 +69,14 @@
 </template>
 
 <script>
-import BlogPost from './components/BlogPost.vue';
+import List from './components/List.vue';
+import Map from './components/Map.vue';
 
 export default {
   name: 'App',
   components: {
-    BlogPost,
+    List,
+    Map,
   },
   data: () => ({
     fab: false,
@@ -83,7 +85,7 @@ export default {
   }),
 
   computed: {
-    BlogPost,
+    List,
     activeFab() {
       switch (this.tabs) {
         case 'one': return { color: 'd3ff72', icon: 'mdi-plus' };

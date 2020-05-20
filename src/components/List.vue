@@ -1,5 +1,5 @@
 <template>
-  <div class="blogpost">
+  <div class="list">
     <v-card
     class="mx-auto"
     max-width="400"
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'BlogPost',
+  name: 'List',
   props: {
   },
 };
@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 
-.blogpost {
+.list {
   margin: 0px;
   max-width: 600px;
 }
