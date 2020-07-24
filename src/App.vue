@@ -32,13 +32,26 @@
 
       <span v-if="showInfo"></span>
       <span v-else>
-        <div style="height: 500px; width: 100%">
-          <v-card color="#385F73" dark class="information">
+        <div class="infocard" style="height: 500px; width: 100%">
+          <v-card color="#385F73" dark class="information"><br>
+            <v-card-actions class="schliessen">
+                  <v-btn @click.native="showInfo = !showInfo" text>Schließen</v-btn>
+                </v-card-actions>
                 <v-card-title class="headline">Info</v-card-title>
-                <iframe class="tabelle" width="95%" height="240" src="https://www.youtube.com/embed/3XcTwi3dKOM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <v-card-subtitle class="schrift">Weggeworfene Lebensmittel pro Kopf und Jahr:
+                <v-expansion-panels focusable class="expansion">
+                  <v-expansion-panel>
+                    <v-expansion-panel-header>Video</v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <iframe class="video" width="113%" height="240" src="https://www.youtube.com/embed/3XcTwi3dKOM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                  <v-expansion-panel>
+                    <v-expansion-panel-header>Lebensmittelverschwendung
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content><br>
+                      <v-card-subtitle class="schrift">Weggeworfene Lebensmittel pro Kopf und Jahr:
                   </v-card-subtitle>
-                  <v-simple-table class="tabelle">
+                      <v-simple-table class="tabelle">
                     <template v-slot:default>
                       <thead>
                         <tr>
@@ -54,10 +67,68 @@
                       </tbody>
                     </template>
                   </v-simple-table>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                  <v-expansion-panel>
+                    <v-expansion-panel-header>Was ist Rettich?</v-expansion-panel-header>
+                    <v-expansion-panel-content><br>
+Rettich ist eine Ergänzung zu bestehen Lösungen wie https://foodsharing.de/ oder https://mundraub.org/
+Eine Webapp, die das Containern (also das retten von Lebensmitteln die von den
+ Supermärkten weggeschmissen werden aber noch gut sind) vereinfacht.
+Also eine interaktive Map auf der die Spots angezeigt werden wo das Essen retten gut funktioniert.
+Bei den Spots kann man dann den Status ändern, Kommentare hinzufügen oder den Spot bewerten.
+ Es kann z.b. von “heute noch nicht geleert“ auf “hier gibt's leider nix mehr“
+  geändert werden. Und wenn der Laden das nächste mal schließt wird das
+ wieder automatisch auf "voll" resettet.
+Zusätzlich kann man auch neue Spots mit kurzer Beschreibung
+ eintragen und Fotos zu den Tonnen hinzufügen...
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                  <v-expansion-panel>
+                  <v-expansion-panel-header>was bringt das?</v-expansion-panel-header>
+                    <v-expansion-panel-content><br>
+                      Dank Rettich sparen sich die Essens-Retter zeit, Sie bringen
+                       sich nicht unnötig in Gefahr und es vereinfacht ihnen das Leben.
+Außerdem versuchen wir mit dieser provokanten Aktion das Thema Lebensmittel- Missbrauch
+ in die Öffentlichkeit zu bringen und dafür zu sorgen, dass diesem
+  Zustand mehr Aufmerksamkeit geschenkt wird!
+wir kommerzialisieren quasi das Containern, wodurch es längerfristig vielleicht sogar legalisiert
+ werden könnte oder noch besser es wird verboten noch gute Lebensmittel wegzuwerfen.
+  Wenn weniger Lebensmittel weggeschmissen/produziert werden ist das ein Beitrag zum Klimaschutz.
+Laut Schätzungen der Weltgesundheitsorganisation (WHO) werden weltweit rund 1,3 Milliarden Tonnen
+ Lebensmittel pro Jahr verschwendet. Gleichzeitig müssen 821,6 Millionen Menschen hungern!
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                  <v-expansion-panel>
+                  <v-expansion-panel-header>Ist das Legal?</v-expansion-panel-header>
+                    <v-expansion-panel-content><br>
+                      Wir rufen nicht zu Straftaten auf,
+                       sondern dokumentieren bloß die Erfahrungen anderer!
+Das Containern selbst ist nach aktueller Rechtslage in Deutschland verboten und zählt als Diebstahl.
+ Das ist ein Skandal und andere Länder Zeigen bereits wie es besser geht!
+  Angesichts der immer weiter
+  verschärfenden Klimakrise haltern wir es allerdings für Legitim diese Gesetze zu brechen.
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                  <v-expansion-panel>
+                  <v-expansion-panel-header>Wie geht man Containern?</v-expansion-panel-header>
+                    <v-expansion-panel-content><br>
+                      Alles was du brauchst ist eine Taschenlampe,
+                       Handschuhe und ein Beutel für das Gerettete!
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                  <v-expansion-panel>
+                  <v-expansion-panel-header>Was wenn die Container verschlossen sind?
+                  </v-expansion-panel-header>
+                    <v-expansion-panel-content><br>
+                      Das knacken der Container ist natürlich aufwendig. Aber wir haben gehört:
+                       Da hilft Sekundenkleber. Einfach zukleben Dann müssen die
+                        "Super"-märkte ihre Container selbst knacken und merken wie das ist.
+                       Spätestens beim zweiten mal werden sie auch nicht mehr absperren!
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
 
-                <v-card-actions class="schliessen">
-                  <v-btn @click.native="showInfo = !showInfo" text>Schließen</v-btn>
-                </v-card-actions>
           </v-card>
         </div>
       </span>
@@ -157,18 +228,38 @@ export default {
 </script>
 <style scoped>
   .tabelle {
-    margin: 10px;
-    margin-bottom: 300px;
+    margin: 0px;
   }
   .schrift {
-    margin-top: -280px;
-    margin-bottom: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .schliessen {
-    margin-top: -280px;
-    margin-bottom: 400px;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    margin-left: 68%;
   }
   .information {
-    padding-bottom: 40px;
+    padding-bottom: 500px;
+  }
+  .infocard {
+    margin-top: -110px;
+    padding-top: 0px;
+  }
+  .headline {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .expansion {
+    margin: 10px;
+    width: 95%;
+  }
+  .video {
+    margin-bottom: -22px;
+    margin-left: -23px;
   }
 </style>
